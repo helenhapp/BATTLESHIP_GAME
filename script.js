@@ -304,8 +304,8 @@ playBtn.onclick = () => {
 
   if (!game.started) {
     game.started = true;
-    playerBoard.element.style.pointerEvents = "none";
-    computerBoard.element.style.pointerEvents = "auto";
+    playerBoard.element.style.pointerEvents = "none"; // can't change ships anymore
+    computerBoard.element.style.pointerEvents = "auto"; // now clickable for attacks
     playBtn.textContent = "Почати з початку";
     setMessage("Гра почалась! Атакуйте!");
     return;
@@ -333,3 +333,4 @@ computerBoard.matrix.forEach((row, r) => {
 playBtn.textContent = "Грати";
 setMessage("Розмістіть корабель 1 з 3.");
 updateScoreboard();
+computerBoard.element.style.pointerEvents = "none";
