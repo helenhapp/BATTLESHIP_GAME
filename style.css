@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  background-color: sandybrown;
+  background-image: url("./sea.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100dvh;
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+#game {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+}
+
+/*-------- Board Containers -------*/
+section {
+  text-align: center;
+}
+
+section h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #222;
+}
+
+.board {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*-------- Cells --------*/
+.cell {
+  width: 46px;
+  height: 46px;
+  background-color: #6ea8ff;
+  margin: 4px;
+  border-radius: 6px;
+  border: 2px solid #395b96;
+  transition: 0.15s;
+  font-size: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  cursor: pointer;
+  background-color: #8bb8ff;
+  transform: scale(1.06);
+}
+
+.cell:active {
+  transform: scale(0.95);
+}
+
+.cell.disabled {
+  pointer-events: none;
+}
+
+/*-------- Player Ships --------*/
+.ship {
+  background-color: #4caf50 !important;
+  border-color: #2f6b30;
+}
+
+.revealed {
+  background: #ffeaa7 !important;
+  color: #2d3436;
+}
+
+/*-------- Hit / Miss Colors --------*/
+.hit {
+  background-color: #ff6e6e !important;
+  border-color: #a33;
+  opacity: 0.55;
+}
+
+.miss {
+  background-color: #d6e4ff !important;
+  border-color: #777;
+  opacity: 0.55;
+}
+
+/*-------- Status Message --------*/
+#message {
+  margin-top: 10px;
+  font-size: 22px;
+  padding: 12px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: #222;
+  min-height: 35px;
+  text-align: center;
+}
+
+/*-------- Buttons --------*/
+#playBtn {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+  transition: 0.2s;
+}
+
+#playBtn:hover {
+  background: #2980b9;
+}
+
+#playBtn:active {
+  transform: scale(0.95);
+}
+
+#undoBtn {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f1c40f;
+  color: black;
+  transition: 0.2s;
+}
+
+#undoBtn:hover {
+  background: #d4ac0d;
+}
+
+#undoBtn:active {
+  transform: scale(0.95);
+}
+
+/*-------- Responsive --------*/
+@media (max-width: 700px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  #game {
+    flex-direction: column;
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+  }
+}

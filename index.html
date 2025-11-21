@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Гра "Морський Бій"</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <h1>Гра "Морський Бій"</h1>
+
+    <div id="scoreboard">
+      Перемоги гравця: <span id="playerScore">0</span> | Перемоги комп'ютера:
+      <span id="computerScore">0</span>
+    </div>
+
+    <div id="message"></div>
+
+    <div id="game">
+      <section>
+        <h2>Поле гравця</h2>
+        <div id="player" class="board"></div>
+      </section>
+
+      <section>
+        <h2>Поле комп'ютера</h2>
+        <div id="computer" class="board"></div>
+      </section>
+    </div>
+
+    <button id="playBtn" type="button">Грати</button>
+    <!-- <button id="undoBtn" type="button">Скасувати</button> -->
+
+    <script src="./script.js"></script>
+  </body>
+</html>
