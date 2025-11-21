@@ -137,25 +137,6 @@ section h2 {
   transform: scale(0.95);
 }
 
-#undoBtn {
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #f1c40f;
-  color: black;
-  transition: 0.2s;
-}
-
-#undoBtn:hover {
-  background: #d4ac0d;
-}
-
-#undoBtn:active {
-  transform: scale(0.95);
-}
-
 /*-------- Responsive --------*/
 @media (max-width: 700px) {
   h1 {
