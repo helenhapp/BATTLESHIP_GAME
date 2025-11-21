@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Гра "Морський Бій"</title>
+    <style>
+      body {
+        background: url("../sea.avif") no-repeat center/cover fixed;
+        font-family: "Trebuchet MS", sans-serif;
+        text-align: center;
+        color: #333;
+      }
+      .board {
+        display: inline-block;
+        background: white;
+        padding: 15px;
+        border-radius: 15px;
+      }
+      .cell {
+        cursor: pointer;
+        float: left;
+        width: 46px;
+        height: 46px;
+        margin: 4px;
+        border-radius: 6px;
+        background-color: cornflowerblue;
+        border: 2px solid midnightblue;
+        font-size: 28px;
+      }
+      .cell:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+      }
+      .cell:active {
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Гра "Морський Бій" (ч. 1)</h1>
+
+    <section>
+      <h2>Поле гравця</h2>
+      <div id="player" class="board"></div>
+    </section>
+
+    <script>
+      const SIZE = 5;
+      const MAX_SHIPS = 3;
+      let ship_count = 0;
+      const playerBoard = document.getElementById("player");
+      const playerMatrix = createBoardAndMatrix(playerBoard);
+
+      playerMatrix.forEach((row) => {
+        row.forEach((cell) => {
+          cell.onclick = () => {
+            if (cell.hasShip === true) {
+              cell.textContent = "";
+              cell.hasShip = false;
+              ship_count--;
+            } else if (ship_count < MAX_SHIPS) {
+              cell.textContent = "🚢";
+              cell.hasShip = true;
+              ship_count++;
+            }
+          };
+        });
+      });
+
+      function createBoardAndMatrix(board) {
+        const matrix = [];
+        for (let i = 0; i < SIZE; i++) {
+          const boardRow = document.createElement("div");
+          const matrixRow = [];
+          for (let j = 0; j < SIZE; j++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.hasShip = false;
+            boardRow.appendChild(cell);
+            matrixRow.push(cell);
+          }
+          board.appendChild(boardRow);
+          matrix.push(matrixRow);
+        }
+        return matrix;
+      }
+    </script>
+  </body>
+</html>

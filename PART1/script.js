@@ -1,15 +1,15 @@
-/* 
-   ПОЧАТОК ПРОГРАМИ
+/*
+    ПОЧАТОК ПРОГРАМИ
 
 1. Встановити константи:
-   - SIZE = 5           // розмір поля
-   - MAX_SHIPS = 3      // максимальна кількість кораблів
+   - SIZE = 5          // розмір поля
+   - MAX_SHIPS = 3     // максимальна кількість кораблів
 
 2. Ініціалізувати змінну:
-   - ship_count = 0     // лічильник розміщених кораблів
+   - ship_count = 0    // лічильник розміщених кораблів
 
 3. Отримати DOM-елемент:
-   - playerBoard        // контейнер для поля гравця
+   - playerBoard       // контейнер для поля гравця
 */
 
 const SIZE = 5;
@@ -19,104 +19,96 @@ let ship_count = 0;
 
 const playerBoard = document.getElementById("player");
 
-/* 
-   СТВОРЕННЯ ІГРОВОГО ПОЛЯ
+/*
+    СТВОРЕННЯ ІГРОВОГО ПОЛЯ + МАТРИЦІ
 
-4. Функція createBoard(board):
-   - Для кожного рядка i від 0 до SIZE-1:
-       • створити контейнер row
+4. Функція createBoardAndMatrix(board):
 
-       - Для кожної клітинки j від 0 до SIZE-1:
-           • створити cell
-           • додати cell до row
+     - Створити порожню матрицю matrix
 
-       • додати row до board
+     - Для кожного рядка i від 0 до SIZE-1:
 
-5. Викликати createBoard(playerBoard)
+         • Створити елемент row (рядок на полі)
+         • Створити порожній matrixRow
+
+         - Для кожної клітинки j від 0 до SIZE-1:
+
+               ◦ Створити елемент cell
+               ◦ Додати клас "cell"
+               ◦ Додати властивість cell.hasShip = false
+               ◦ Додати cell у row
+               ◦ Додати cell у matrixRow
+
+         • Додати row у board
+         • Додати matrixRow у matrix
+
+     - Повернути matrix
+
+    5. Викликати createBoardAndMatrix(playerBoard) → playerMatrix
 */
 
-function createBoard(board) {
+/*
+matrix = [
+  [cell1, cell2, cell3, cell4, cell5],
+  [cell6, cell7, cell8, cell9, cell10],
+  [cell11, cell12, cell13, cell14, cell15],
+  [cell16, cell17, cell18, cell19, cell20],
+  [cell21, cell22, cell23, cell24, cell25]
+] 
+*/
+
+function createBoardAndMatrix(board) {
+  const matrix = [];
+
   for (let i = 0; i < SIZE; i++) {
-    const row = document.createElement("div");
-    // row.classList.add("row");
+    const boardRow = document.createElement("div");
+    const matrixRow = [];
 
     for (let j = 0; j < SIZE; j++) {
       const cell = document.createElement("div");
       cell.classList.add("cell");
-      row.appendChild(cell);
-    }
-
-    board.appendChild(row);
-  }
-}
-
-createBoard(playerBoard);
-
-/* 
-   СТВОРЕННЯ МАТРИЦІ КЛІТИНОК
-
-6. Функція createMatrix(board):
-   - Ініціалізувати порожню матрицю matrix
-
-   - Для кожного рядка i у board:
-       • Ініціалізувати порожній рядок matrixRow
-
-       - Для кожної клітинки j у рядку i:
-           • додати клітинку до matrixRow
-
-       • додати matrixRow до matrix
-
-   - Повернути matrix
-
-7. Викликати createMatrix(playerBoard) → playerMatrix
-*/
-
-function createMatrix(board) {
-  const matrix = [];
-
-  for (let i = 0; i < SIZE; i++) {
-    const boardRow = board.children[i];
-    const matrixRow = [];
-
-    for (let j = 0; j < SIZE; j++) {
-      const cell = boardRow.children[j];
+      cell.hasShip = false;
+      boardRow.appendChild(cell);
       matrixRow.push(cell);
     }
 
+    board.appendChild(boardRow);
     matrix.push(matrixRow);
   }
 
   return matrix;
 }
 
-const playerMatrix = createMatrix(playerBoard);
+const playerMatrix = createBoardAndMatrix(playerBoard);
 
-/* 
-   РОЗМІЩЕННЯ / СКАСУВАННЯ КОРАБЛІВ 
+// playerBoard.children[0].children[1].style.backgroundColor = "gold";
+// playerBoard.children[3].children[3].style.backgroundColor = "hotpink";
 
-8. Для кожної клітинки cell у playerMatrix:
+// playerMatrix[0][0].style.backgroundColor = "white";
+// playerMatrix[4][4].style.backgroundColor = "coral";
 
-   - Додати властивість cell.hasShip = false
+/*
+    РОЗМІЩЕННЯ / СКАСУВАННЯ КОРАБЛІВ
 
-   - Встановити onclick функцію:
+6. Для кожної клітинки cell у playerMatrix:
 
-       • Якщо cell.hasShip == true:
-           - Очистити текст клітинки
-           - Встановити cell.hasShip = false
-           - Зменшити ship_count на 1
+     - Призначити cell.onclick:
 
-       • Інакше, якщо ship_count < MAX_SHIPS:
-           - Установити текст "🚢" у клітинці
-           - Встановити cell.hasShip = true
-           - Збільшити ship_count на 1
+           • Якщо cell.hasShip == true:
+                 - Очистити текст клітинки
+                 - Встановити cell.hasShip = false
+                 - Зменшити ship_count на 1
+
+           • Інакше, якщо ship_count < MAX_SHIPS:
+                 - Додати текст "🚢" у клітинку
+                 - Встановити cell.hasShip = true
+                 - Збільшити ship_count на 1
 */
 
 playerMatrix.forEach((row) => {
   row.forEach((cell) => {
-    cell.hasShip = false;
-
     cell.onclick = () => {
-      if (cell.hasShip) {
+      if (cell.hasShip === true) {
         cell.textContent = "";
         cell.hasShip = false;
         ship_count--;

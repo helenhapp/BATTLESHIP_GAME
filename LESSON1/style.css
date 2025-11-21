@@ -1,0 +1,108 @@
+body {
+  font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+  background: linear-gradient(#a7e3ff, #e3f6ff);
+  margin: 0;
+  padding: 0;
+  color: #064f7b;
+}
+
+header {
+  background: #ffca3a;
+  color: #ffffff;
+  padding: 25px;
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #c79b00;
+  border-bottom: 10px solid #e3ad00;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.step {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  margin: 35px 0;
+  border-left: 14px solid #3fa9f5;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.step::after {
+  content: "⚓";
+  font-size: 32px;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.step h2 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #0080c8;
+  text-shadow: 1px 1px 0px #7dd0ff;
+}
+
+.explain {
+  font-size: 19px;
+  background: #e7f6ff;
+  padding: 16px;
+  border-radius: 14px;
+  border: 3px dashed #9ad7ff;
+  margin-top: 10px;
+}
+
+pre {
+  background: #2b2b2b;
+  color: #f8f8f2;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 16px;
+  overflow-x: auto;
+  display: none;
+  border: 3px solid #6ecbff;
+}
+
+button.show-btn {
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #3fa9f5;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #2a80b8;
+}
+
+button.show-btn:hover {
+  background: #1f8eda;
+}
+
+button.show-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #2a80b8;
+}
+
+.code-copy-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  margin-top: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  border: 4px solid #ffd768;
+}
+
+.code-copy-box h2 {
+  color: #ff9a00;
+  font-size: 26px;
+  text-shadow: 1px 1px 0px #c97800;
+}
