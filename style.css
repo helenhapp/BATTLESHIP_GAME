@@ -154,3 +154,17 @@ section h2 {
     height: 42px;
   }
 }
+
+#links {
+  display: flex;
+  gap: 30px;
+}
+
+#links a {
+  text-decoration: none;
+  color: darkblue;
+}
+
+#links a:hover {
+  color: sienna;
+}
