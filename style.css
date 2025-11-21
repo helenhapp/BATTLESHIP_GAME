@@ -16,7 +16,7 @@ body {
   background-image: url("./sea.avif");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: fixed;
+  background-attachment: fixed;
   min-height: 100dvh;
 }
 
